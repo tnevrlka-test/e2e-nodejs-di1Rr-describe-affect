@@ -1,0 +1,22 @@
+apiVersion: pipelinesascode.tekton.dev/v1alpha1
+kind: Repository
+metadata:
+  annotations:
+    appstudio.openshift.io/application: e2e-nodejs
+    appstudio.openshift.io/component: nodejs-health-check-ecv7
+    build.appstudio.openshift.io/build: "true"
+    build.appstudio.openshift.io/type: build
+    build.appstudio.openshift.io/version: "0.1"
+    pipelines.appstudio.openshift.io/type: build
+  creationTimestamp: null
+  name: nodejs-health-check-ecv7
+  namespace: e2e-demos-aipj-tenant
+spec:
+  git_provider:
+    secret:
+      key: github.token
+      name: pipelines-as-code-secret
+    webhook_secret:
+      key: https___github.com_nodeshift-starters_nodejs-health-check
+      name: pipelines-as-code-webhooks-secret
+  url: https://github.com/nodeshift-starters/nodejs-health-check
